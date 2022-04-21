@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 Widget slideLeftBcg() {
   return Container(
-    color: Colors.green,
+    color: Color.fromRGBO(51, 219, 174, 1),
     child: Align(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.end,

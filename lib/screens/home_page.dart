@@ -45,10 +45,12 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: const Text(
+          'My To-Do List',
+        ),
       ),
       body: SafeArea(
-        child: Container(child: TasksList(tasks: tasks)),
+        child: Container(color: Colors.white, child: TasksList(tasks: tasks)),
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),

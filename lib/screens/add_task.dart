@@ -45,23 +45,29 @@ class _AddTaskState extends State<AddTask> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                const Text('Add Task',
-                    style: TextStyle(
-                      color: Colors.blue,
-                      fontSize: 25.0,
-                    )),
+                const Padding(
+                  padding: EdgeInsets.fromLTRB(0, 0, 0, 20),
+                  child: Text('Add Task',
+                      style: TextStyle(
+                        color: Colors.blue,
+                        fontSize: 25.0,
+                      )),
+                ),
                 TextField(
                   textAlign: TextAlign.center,
                   onChanged: (newText) {
                     currentTaskName = newText;
                   },
                   controller: nameFieldText,
+                  decoration: InputDecoration(hintText: "Enter title"),
                 ),
                 TextField(
                   onChanged: (newText) {
                     currentTaskDescription = newText;
                   },
                   controller: descriptionFieldText,
+                  textAlign: TextAlign.center,
+                  decoration: InputDecoration(hintText: "Enter description"),
                 ),
                 SfDateRangePicker(
                   onSelectionChanged:
@@ -76,10 +82,10 @@ class _AddTaskState extends State<AddTask> {
                       value: currentTaskType,
                       icon: const Icon(Icons.arrow_downward),
                       elevation: 16,
-                      style: const TextStyle(color: Colors.deepPurple),
+                      style: const TextStyle(color: Colors.blue),
                       underline: Container(
                         height: 2,
-                        color: Colors.deepPurpleAccent,
+                        color: Colors.blue,
                       ),
                       onChanged: (TaskType? newValue) {
                         currentTaskType = newValue!;

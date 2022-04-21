@@ -20,20 +20,9 @@ class _TasksListState extends State<TasksList> {
       itemBuilder: (context, index) {
         return Dismissible(
           key: Key(index.toString()),
-          // onDismissed: (DismissDirection direction) {
-          //   setState(() {
-          //     widget.tasks.removeAt(index);
-          //   });
-          // },
           child: TaskTile(
-              task: widget.tasks[index],
-              changeStatusCallback: (bool taskState) {
-                setState(() {
-                  widget.tasks[index].toggleDone();
-                });
-                ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text('Task $index deleted')));
-              }),
+            task: widget.tasks[index],
+          ),
           background: slideRightBcg(),
           secondaryBackground: slideLeftBcg(),
           confirmDismiss: (direction) async {
@@ -71,7 +60,7 @@ class _TasksListState extends State<TasksList> {
                   });
             } else {
               setState(() {
-                widget.tasks[index].status = true;
+                widget.tasks[index].toggleDone();
               });
             }
           },
