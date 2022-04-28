@@ -3,6 +3,7 @@ import 'package:secondlab/widgets/tasks_list.dart';
 import 'package:secondlab/screens/add_task.dart';
 import 'package:secondlab/models/task.dart';
 import '../models/task_type.dart';
+import 'package:secondlab/constants.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);
@@ -23,7 +24,8 @@ class _MyHomePageState extends State<MyHomePage> {
         status: false),
     Task(
         name: "Task 2",
-        description: "Dummy Data Description 2",
+        description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer hendrerit ex urna, et pulvinar ex lacinia ac. Donec vitae risus hendrerit, pharetra risus ac, laoreet nibh. Nam lorem mauris, auctor in gravida nec, pharetra et augue. ",
         dueDate: "30/06/2022",
         type: TaskType.Phone,
         status: false),
@@ -45,14 +47,16 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: kBlueColor,
         title: const Text(
-          'My To-Do List',
+          'TODOS',
         ),
       ),
       body: SafeArea(
-        child: Container(color: Colors.white, child: TasksList(tasks: tasks)),
+        child: Container(color: kBcgColor, child: TasksList(tasks: tasks)),
       ),
       floatingActionButton: FloatingActionButton(
+        backgroundColor: kBlueColor,
         child: Icon(Icons.add),
         onPressed: () {
           showModalBottomSheet(

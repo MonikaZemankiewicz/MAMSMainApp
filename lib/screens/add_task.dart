@@ -3,6 +3,7 @@ import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 import 'package:intl/intl.dart';
 import 'package:secondlab/models/task.dart';
 import 'package:secondlab/models/task_type.dart';
+import 'package:secondlab/constants.dart';
 
 class AddTask extends StatefulWidget {
   final Function addTaskCallback;
@@ -30,14 +31,14 @@ class _AddTaskState extends State<AddTask> {
     }
 
     return Container(
-      color: const Color(0xff757575),
+      color: Color.fromARGB(255, 172, 168, 168),
       child: Container(
         decoration: const BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(20.0),
-            topRight: Radius.circular(20.0),
-          ),
+          color: kBcgColor,
+          // borderRadius: BorderRadius.only(
+          //   topLeft: Radius.circular(20.0),
+          //   topRight: Radius.circular(20.0),
+          // ),
         ),
         child: Padding(
           padding: const EdgeInsets.all(20.0),
@@ -49,7 +50,7 @@ class _AddTaskState extends State<AddTask> {
                   padding: EdgeInsets.fromLTRB(0, 0, 0, 20),
                   child: Text('Add Task',
                       style: TextStyle(
-                        color: Colors.blue,
+                        color: kBlueColor,
                         fontSize: 25.0,
                       )),
                 ),
@@ -85,7 +86,7 @@ class _AddTaskState extends State<AddTask> {
                       style: const TextStyle(color: Colors.blue),
                       underline: Container(
                         height: 2,
-                        color: Colors.blue,
+                        color: kBlueColor,
                       ),
                       onChanged: (TaskType? newValue) {
                         currentTaskType = newValue!;
@@ -105,9 +106,10 @@ class _AddTaskState extends State<AddTask> {
                         type: currentTaskType,
                         status: false));
                     clearText();
+                    Navigator.pop(context);
                   },
                   child: Container(
-                    color: Colors.blue,
+                    color: kBlueColor,
                     margin: EdgeInsets.only(top: 30.0),
                     width: double.infinity,
                     height: 80.0,

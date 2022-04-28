@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:secondlab/constants.dart';
 
-Widget slideLeftBcg() {
+Widget slideDoneLeftBcg() {
   return Container(
-    color: kGreenColor,
+    color: kYellowColor,
     child: Align(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.end,
@@ -14,7 +14,7 @@ Widget slideLeftBcg() {
           Padding(
             padding: EdgeInsets.all(16.0),
             child: Icon(
-              Icons.done,
+              Icons.undo_outlined,
               color: Colors.white,
             ),
           ),

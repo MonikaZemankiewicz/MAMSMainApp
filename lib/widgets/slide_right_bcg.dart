@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:secondlab/constants.dart';
 
 Widget slideRightBcg() {
   return Container(
-    color: Color.fromARGB(255, 238, 155, 155),
+    color: kRedColor,
     child: Align(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
