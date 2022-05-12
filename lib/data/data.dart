@@ -33,9 +33,13 @@ List<Event> events = [
 List<Place> places = [
   Place(
     name: "La Alcazaba",
-    description: "Dummy Data Description",
-    address: "Stokrotkowa 13",
-    images: [],
+    description:
+        "The Alcazaba of Almería can be seen from any part of the city and it is the biggest of the citadels built by the Arabs in Spain. Its construction was begun in 955 by Abderramán III and finished by Hayrán, taifa king of Almeria, in the XI century. After the Christian conquest it was reformed by the Catholic Monarchs and Carlos I. It has three walled enclosures. One of the three was built by the Catholic Monarchs. It was a royal residence and today stands at the foot of Al-Mutasin palace with all its rooms, its mosque, converted into a church since the end of the XV century, and its baths. It has only one entrance, made almost invisible by the enormous walls as well as large rooms with vaulted ceilings and gothic doors. From the top of the castle walls we can enjoy marvellous views of the city and the port.",
+    address: "C. Almanzor, s/n, 04002 Almería, Spain",
+    audio: "monsul.mp3",
+    location:
+        "https://www.google.com/maps/place/Conjunto+Monumental+de+la+Alcazaba+de+Almer%C3%ADa/@36.8410548,-2.4738401,17z/data=!3m1!4b1!4m5!3m4!1s0xd707607b5a1f473:0xdf577194575ccf6c!8m2!3d36.8400107!4d-2.4701489?hl=en",
+    images: ["images/img19.jpg", "images/img20.jpg", "images/img21.jpg"],
     video: "video1.mp4",
   ),
   Place(
@@ -43,12 +47,14 @@ List<Place> places = [
     description: "Dummy Data Description",
     address: "Dzwonkowa 57",
     video: "video2.mp4",
+    audio: "monsul.mp3",
   ),
   Place(
     name: "Cabo de gata",
     description: "Dummy Data Description",
     address: "Kraciasta 1",
     video: "video3.mp4",
+    audio: "monsul.mp3",
   ),
   Place(
       name: "Mónsul and Genoveses",
@@ -66,6 +72,7 @@ List<Place> places = [
     description: "Dummy Data Description",
     address: "Kraciasta 1",
     video: "video3.mp4",
+    audio: "monsul.mp3",
   ),
 ];
 

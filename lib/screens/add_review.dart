@@ -16,7 +16,7 @@ class AddReview extends StatefulWidget {
 class _AddReviewState extends State<AddReview> {
   @override
   Widget build(BuildContext context) {
-    String currentComment = 'New Comment';
+    String currentComment = '';
 
     final nameFieldText = TextEditingController();
     final descriptionFieldText = TextEditingController();

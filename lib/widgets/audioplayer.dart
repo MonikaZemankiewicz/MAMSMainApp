@@ -11,9 +11,8 @@ class AudioPlayerPanel extends StatefulWidget {
 }
 
 class _AudioPlayerPanelState extends State<AudioPlayerPanel> {
-  int maxduration = 100;
+  int maxduration = 200;
   int currentpos = 0;
-  String currentpostlabel = "00:00";
   bool isplaying = false;
   bool audioplayed = false;
   late Uint8List audiobytes;
@@ -39,17 +38,6 @@ class _AudioPlayerPanelState extends State<AudioPlayerPanel> {
         currentpos =
             p.inMilliseconds; //get the current position of playing audio
 
-        //generating the duration label
-        int shours = Duration(milliseconds: currentpos).inHours;
-        int sminutes = Duration(milliseconds: currentpos).inMinutes;
-        int sseconds = Duration(milliseconds: currentpos).inSeconds;
-
-        int rhours = shours;
-        int rminutes = sminutes - (shours * 60);
-        int rseconds = sseconds - (sminutes * 60 + shours * 60 * 60);
-
-        currentpostlabel = "$rhours:$rminutes:$rseconds";
-
         setState(() {
           //refresh the UI
         });
@@ -63,18 +51,11 @@ class _AudioPlayerPanelState extends State<AudioPlayerPanel> {
     return Column(
       children: [
         Container(
-          child: Text(
-            currentpostlabel,
-            style: TextStyle(fontSize: 25),
-          ),
-        ),
-        Container(
             child: Slider(
           value: double.parse(currentpos.toString()),
           min: 0,
           max: double.parse(maxduration.toString()),
           divisions: maxduration,
-          label: currentpostlabel,
           onChanged: (double value) async {
             int seekval = value.round();
             int result = await player.seek(Duration(milliseconds: seekval));

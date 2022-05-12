@@ -56,10 +56,11 @@ class _TourDetailsState extends State<TourDetails> {
                       padding: const EdgeInsets.all(8.0),
                       child: Row(
                         children: [
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
+                          const Padding(
+                            padding: EdgeInsets.all(8.0),
                             child: Icon(
-                              Icons.circle,
+                              Icons.arrow_forward,
+                              color: kGreenColor,
                               size: 10,
                             ),
                           ),

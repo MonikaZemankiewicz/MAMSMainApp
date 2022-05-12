@@ -24,22 +24,21 @@ class PlaceDetails extends StatefulWidget {
 }
 
 class _PlaceDetailsState extends State<PlaceDetails> {
-  List<String> history = [];
-  int averageRate = 0;
+  List<String> commentsHistory = [];
+  bool rated = false;
+  int currentRate = 3;
 
   @override
   void initState() {
     super.initState();
-    showHistory();
+    getHistory();
   }
 
-  showHistory() async {
+  getHistory() async {
     final prefs = await SharedPreferences.getInstance();
     setState(() {
-      history = prefs.getStringList(widget.place.name) ?? [];
-      if (history.length > 10) {
-        history = history.sublist(history.length - 10).reversed.toList();
-      }
+      commentsHistory = prefs.getStringList(widget.place.name) ?? [];
+      commentsHistory = commentsHistory.reversed.toList();
     });
   }
 
@@ -48,7 +47,7 @@ class _PlaceDetailsState extends State<PlaceDetails> {
     var reviews = prefs.getStringList(widget.place.name) ?? [];
     reviews.add(review.comment);
     prefs.setStringList(widget.place.name, reviews);
-    await showHistory();
+    await getHistory();
   }
 
   @override
@@ -68,13 +67,13 @@ class _PlaceDetailsState extends State<PlaceDetails> {
                   fit: BoxFit.fitHeight,
                 ),
               ),
-              Text("Almeria Guide")
+              const Text("Almeria Guide")
             ],
           ),
         ),
         floatingActionButton: FloatingActionButton(
           backgroundColor: kGreenColor,
-          child: Icon(Icons.star, color: kYellowColor),
+          child: const Icon(Icons.star, color: kYellowColor),
           onPressed: () {
             showModalBottomSheet(
               context: context,
@@ -109,7 +108,7 @@ class _PlaceDetailsState extends State<PlaceDetails> {
                       children: [
                         const Icon(Icons.location_pin,
                             color: Color(0xFFED92A2)),
-                        const SizedBox(width: 20.0),
+                        const SizedBox(width: 10.0),
                         Text(widget.place.address,
                             style: const TextStyle(
                                 color: Color(0xFFA294C2),
@@ -125,7 +124,7 @@ class _PlaceDetailsState extends State<PlaceDetails> {
                           throw "Couldn't launch Map";
                         }
                       },
-                      child: Icon(Icons.near_me),
+                      child: const Icon(Icons.near_me),
                     ),
                   ],
                 ),
@@ -159,46 +158,109 @@ class _PlaceDetailsState extends State<PlaceDetails> {
                   padding: const EdgeInsets.all(20.0),
                   child: VideoPlayerPanel(videoasset: widget.place.video),
                 ),
-                Text("REVIEWS",
+                rated
+                    ? Column(
+                        children: [
+                          Text("Your rating: ",
+                              style: TextStyle(
+                                color: kGreenColor,
+                                fontSize: 25.0,
+                              )),
+                          Padding(
+                            padding: const EdgeInsets.all(20.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(currentRate.toString(),
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 25.0,
+                                    )),
+                                Icon(Icons.star, color: kYellowColor)
+                              ],
+                            ),
+                          )
+                        ],
+                      )
+                    : Column(children: [
+                        const Padding(
+                          padding: EdgeInsets.fromLTRB(0, 20, 0, 10),
+                          child: Text('Add Rating',
+                              style: TextStyle(
+                                color: kGreenColor,
+                                fontSize: 25.0,
+                              )),
+                        ),
+                        SliderTheme(
+                          data: SliderTheme.of(context).copyWith(
+                            thumbShape: const RoundSliderThumbShape(
+                                enabledThumbRadius: 15.0),
+                            overlayShape: const RoundSliderOverlayShape(
+                              overlayRadius: 30.0,
+                            ),
+                          ),
+                          child: Slider(
+                            divisions: 4,
+                            value: currentRate.toDouble(),
+                            min: 1,
+                            max: 5,
+                            label: currentRate.toString(),
+                            activeColor:
+                                const Color.fromARGB(255, 153, 111, 124),
+                            onChanged: (double newValue) {
+                              setState(() {
+                                currentRate = newValue.round();
+                              });
+                            },
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(0, 0, 0, 20),
+                          child: InkWell(
+                            onTap: () {
+                              setState(() {
+                                rated = true;
+                              });
+                            },
+                            child: Container(
+                              color: kGreenColor,
+                              //margin: EdgeInsets.only(top: 30.0),
+                              width: double.infinity,
+                              height: 60.0,
+                              alignment: Alignment.center,
+                              child: const Text(
+                                "ADD RATING",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  letterSpacing: 2,
+                                  fontSize: 20.0,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ]),
+                const Text("REVIEWS",
                     style: TextStyle(
                       fontSize: 20,
                     )),
-                history.length != 0
+                commentsHistory.isNotEmpty
                     ? ListView.separated(
                         shrinkWrap: true,
-                        itemCount: history.length,
+                        itemCount: commentsHistory.length,
                         itemBuilder: (context, index) {
                           return ListTile(
-                            title: Text(history[index]),
+                            title: Text(commentsHistory[index]),
                           );
                         },
                         separatorBuilder: (context, index) {
-                          return Divider();
+                          return const Divider();
                         },
                       )
-                    : Padding(
-                        padding: const EdgeInsets.all(20.0),
+                    : const Padding(
+                        padding: EdgeInsets.all(20.0),
                         child: Text("No reviews yet. Add first review."),
                       ),
-                // FluidActionCard(
-                //   assetimage: 'assets/images/1.png',
-                //   color1: Colors.pinkAccent,
-                //   color2: Colors.black45,
-                //   backgroundcolor: Colors.grey[900]!,
-                //   borderRadius1: BorderRadius.circular(20),
-                //   borderRadius2: BorderRadius.circular(20),
-                //   height: 400.0,
-                //   width: 240.0,
-                //   CardCount: history.length,
-                //   Position: 250.0,
-                //   shadow: const BoxShadow(
-                //     color: Colors.black12,
-                //     blurRadius: 10.0,
-                //     spreadRadius: 0.2,
-                //     offset: Offset(0, 3),
-                //   ),
-                //   ontap: () {},
-                // ),
               ],
             ),
           ),

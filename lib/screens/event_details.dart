@@ -59,7 +59,7 @@ class _EventDetailsState extends State<EventDetails> {
                       children: [
                         const Icon(Icons.location_pin,
                             color: Color(0xFFED92A2)),
-                        const SizedBox(width: 20.0),
+                        const SizedBox(width: 10.0),
                         Text(widget.event.address,
                             style: const TextStyle(
                                 color: Color(0xFFA294C2),
