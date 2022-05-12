@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:secondlab/widgets/tasks_list.dart';
-import 'package:secondlab/screens/add_task.dart';
-import 'package:secondlab/models/task.dart';
-import '../models/task_type.dart';
+import 'package:secondlab/models/accomodation.dart';
+import 'package:secondlab/screens/events_list.dart';
+import 'package:secondlab/screens/places_list.dart';
+import 'package:secondlab/screens/accomodations_list.dart';
+import 'package:secondlab/models/event.dart';
+import 'package:secondlab/models/place.dart';
 import 'package:secondlab/constants.dart';
+import 'package:secondlab/data/data.dart';
+import 'package:secondlab/screens/tours_list.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);
@@ -15,60 +20,43 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  List<Task> tasks = [
-    Task(
-        name: "Task 1",
-        description: "Dummy Data Description",
-        dueDate: "21/05/2022",
-        type: TaskType.Email,
-        status: false),
-    Task(
-        name: "Task 2",
-        description:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer hendrerit ex urna, et pulvinar ex lacinia ac. Donec vitae risus hendrerit, pharetra risus ac, laoreet nibh. Nam lorem mauris, auctor in gravida nec, pharetra et augue. ",
-        dueDate: "30/06/2022",
-        type: TaskType.Phone,
-        status: false),
-    Task(
-        name: "Task 3",
-        description: "Dummy Data Description 3",
-        dueDate: "01/12/2022",
-        type: TaskType.Meeting,
-        status: false),
-    Task(
-        name: "Task 4",
-        description: "Dummy Data Description 4",
-        dueDate: "14/03/2023",
-        type: TaskType.ToDo,
-        status: false),
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: kBlueColor,
-        title: const Text(
-          'TODOS',
+        backgroundColor: kGreenColor,
+        title: Row(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: SvgPicture.asset(
+                'images/mapicon.svg',
+                color: Colors.white,
+                height: 25,
+                fit: BoxFit.fitHeight,
+              ),
+            ),
+            Text("Almeria Guide")
+          ],
+        ),
+        bottom: const TabBar(
+          tabs: [
+            Tab(icon: Icon(Icons.event)),
+            Tab(icon: Icon(Icons.place)),
+            Tab(icon: Icon(Icons.hotel)),
+            Tab(icon: Icon(Icons.map)),
+          ],
         ),
       ),
-      body: SafeArea(
-        child: Container(color: kBcgColor, child: TasksList(tasks: tasks)),
-      ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: kBlueColor,
-        child: Icon(Icons.add),
-        onPressed: () {
-          showModalBottomSheet(
-            context: context,
-            builder: (context) => AddTask(addTaskCallback: (Task newTask) {
-              setState(() {
-                tasks.add(newTask);
-              });
-            }),
-            isScrollControlled: true,
-          );
-        },
+      body: TabBarView(
+        children: [
+          Container(color: kBcgColor, child: EventsList(events: events)),
+          Container(color: kBcgColor, child: PlacesList(places: places)),
+          Container(
+              color: kBcgColor,
+              child: AccomodationsList(accomodations: accomodations)),
+          Container(color: kBcgColor, child: ToursList(tours: tours)),
+        ],
       ),
     );
   }

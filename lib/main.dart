@@ -12,11 +12,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'To-do list',
+      title: 'Almeria Guide',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'To-do list'),
+      // ignore: prefer_const_constructors
+      home: DefaultTabController(
+        length: 4,
+        child: MyHomePage(title: "Almeria Guide"),
+      ),
       debugShowCheckedModeBanner: false,
     );
   }
