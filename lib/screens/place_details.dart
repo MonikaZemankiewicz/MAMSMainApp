@@ -25,7 +25,6 @@ class PlaceDetails extends StatefulWidget {
 
 class _PlaceDetailsState extends State<PlaceDetails> {
   List<String> commentsHistory = [];
-  bool rated = false;
   int currentRate = 3;
 
   @override
@@ -158,7 +157,7 @@ class _PlaceDetailsState extends State<PlaceDetails> {
                   padding: const EdgeInsets.all(20.0),
                   child: VideoPlayerPanel(videoasset: widget.place.video),
                 ),
-                rated
+                widget.place.rated
                     ? Column(
                         children: [
                           Text("Your rating: ",
@@ -171,7 +170,7 @@ class _PlaceDetailsState extends State<PlaceDetails> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Text(currentRate.toString(),
+                                Text(widget.place.rate.toString(),
                                     style: TextStyle(
                                       color: Colors.black,
                                       fontSize: 25.0,
@@ -219,7 +218,8 @@ class _PlaceDetailsState extends State<PlaceDetails> {
                           child: InkWell(
                             onTap: () {
                               setState(() {
-                                rated = true;
+                                widget.place.rated = true;
+                                widget.place.rate = currentRate;
                               });
                             },
                             child: Container(

@@ -149,7 +149,7 @@ class _AccomodationDetailsState extends State<AccomodationDetails> {
                         fontSize: 15.0,
                       )),
                 ),
-                rated
+                widget.accomodation.rated
                     ? Column(
                         children: [
                           Text("Your rating: ",
@@ -162,7 +162,7 @@ class _AccomodationDetailsState extends State<AccomodationDetails> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Text(currentRate.toString(),
+                                Text(widget.accomodation.rate.toString(),
                                     style: TextStyle(
                                       color: Colors.black,
                                       fontSize: 25.0,
@@ -210,7 +210,8 @@ class _AccomodationDetailsState extends State<AccomodationDetails> {
                           child: InkWell(
                             onTap: () {
                               setState(() {
-                                rated = true;
+                                widget.accomodation.rated = true;
+                                widget.accomodation.rate = currentRate;
                               });
                             },
                             child: Container(

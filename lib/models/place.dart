@@ -4,9 +4,10 @@ class Place {
   String address;
   String audio;
   List<String> images;
-  double rate;
+  int rate;
   String video;
   String location;
+  bool rated;
 
   Place({
     this.name = "Default Name",
@@ -14,8 +15,9 @@ class Place {
     this.address = "Address",
     this.audio = "audio1.mp3",
     this.images = const [],
-    this.rate = 5.0,
+    this.rate = 5,
     this.video = "1.mp4",
     this.location = "",
+    this.rated = false,
   });
 }
