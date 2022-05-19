@@ -19,8 +19,8 @@ List<Event> events = [
       description:
           "La Feria de Almería tiene una duración de 8 días, donde contará como todos los años con un extenso programa de eventos, conciertos y actividades.",
       address: "04007 Vega de Aca, Almería",
-      location:
-          "https://www.google.com/maps/place/Av.+de+la+Vega+de+Aca,+04007+Almer%C3%ADa,+Spain/@36.8283299,-2.4400742"),
+      location: "https://www.google.com/maps/place/Av.+de+la+Vega+de+Aca,+04007+Almer%C3%ADa,+Spain/@36.8283299,-2.4400742",
+      images: ["images/img22.jpg", "images/img23.jpg", "images/img24.jpg"]),
   Event(
       name: "Southwest Festival",
       description:
@@ -36,43 +36,53 @@ List<Place> places = [
     description:
         "The Alcazaba of Almería can be seen from any part of the city and it is the biggest of the citadels built by the Arabs in Spain. Its construction was begun in 955 by Abderramán III and finished by Hayrán, taifa king of Almeria, in the XI century. After the Christian conquest it was reformed by the Catholic Monarchs and Carlos I. It has three walled enclosures. One of the three was built by the Catholic Monarchs. It was a royal residence and today stands at the foot of Al-Mutasin palace with all its rooms, its mosque, converted into a church since the end of the XV century, and its baths. It has only one entrance, made almost invisible by the enormous walls as well as large rooms with vaulted ceilings and gothic doors. From the top of the castle walls we can enjoy marvellous views of the city and the port.",
     address: "C. Almanzor, s/n, 04002 Almería, Spain",
-    audio: "monsul.mp3",
+    audio: "alcazaba.mp3",
     location:
         "https://www.google.com/maps/place/Conjunto+Monumental+de+la+Alcazaba+de+Almer%C3%ADa/@36.8410548,-2.4738401,17z/data=!3m1!4b1!4m5!3m4!1s0xd707607b5a1f473:0xdf577194575ccf6c!8m2!3d36.8400107!4d-2.4701489?hl=en",
     images: ["images/img19.jpg", "images/img20.jpg", "images/img21.jpg"],
-    video: "video1.mp4",
+    video: "video3.mp4",
   ),
   Place(
     name: "The cathedral",
-    description: "Dummy Data Description",
-    address: "Dzwonkowa 57",
-    video: "video2.mp4",
-    audio: "monsul.mp3",
+    description:
+        "The Cathedral of Almería (Spanish: Catedral de Almería), in full the Cathedral of the Incarnation of Almería (Spanish: Catedral de la Encarnación de Almería), is a Roman Catholic cathedral in the city of Almería, Andalusia. It is the seat of the Diocese of Almería.",
+    address: "Pl. de la Catedral, 8, 04001 Almería, Spain",
+    location:
+        "https://www.google.com/maps/place/Almeria+Cathedral/@36.8381735,-2.4695795,17z/data=!3m1!4b1!4m5!3m4!1s0xd70760693a75ad7:0x318a826205f1c4f1!8m2!3d36.8381735!4d-2.4673908",
+    video: "video3.mp4",
+    images: ["images/img25.jpg", "images/img26.jpg", "images/img27.jpg"],
+    audio: "cathedral.mp3",
   ),
   Place(
     name: "Cabo de gata",
-    description: "Dummy Data Description",
-    address: "Kraciasta 1",
+    description:
+        "Cabo de Gata-Níjar Natural Park in the southeastern corner of Spain is Andalusia's largest protected coastal area, a wild and isolated landscape. Spain's southeast coast, where the park is situated, is the only region in mainland Europe with a true hot desert climate (Köppen climate classification: BWh). The eponymous mountain range of the Sierra del Cabo de Gata, with its highest peak El Fraile, form a volcanic rock formation with sharp peaks and crags in red and ochre hues. It falls steeply to the Mediterranean Sea, creating jagged 100-metre (330 ft) high cliffs riven by gullies, creating hidden coves and white, sandy beaches. Offshore are numerous tiny rocky islands and extensive coral reefs teeming with marine life.[2] Its climate is dry, with rainfall below 160 mm (6.3 in) a year and average yearly temperatures above 19 °C (66 °F). In 1997, it was designated as a UNESCO Biosphere Reserve. In 2001, it was included among the Specially Protected Areas of Mediterranean Importance, due to the adsorptive properties and low permeability of its clays, the area was studied as a possible place for deep storage of sealed radioactive waste.",
+    address: "04118 Níjar, Almería, Spain",
+    location:
+        "https://www.google.com/maps/place/Parque+Natural+del+Cabo+de+Gata-N%C3%ADjar/@36.722192,-2.1939447,17z/data=!3m1!4b1!4m5!3m4!1s0xd7a8d6eac00da71:0x804122782017fd50!8m2!3d36.722192!4d-2.191756",
     video: "video3.mp4",
-    audio: "monsul.mp3",
+    images: ["images/img28.jpg", "images/img29.jpg", "images/img30.jpg"],
+    audio: "cabodegata.mp3",
   ),
   Place(
       name: "Mónsul and Genoveses",
       description:
           "Monsul is the most photographed beach of Natural Park Cabo de Gata in Spain. Clear water and curious rock formations of volcanic origin.",
-      address:
-          "Parque Natural Cabo de Gata-Nijar, 04118 San José, Almería, Spain",
+      address: "Parque Natural Cabo de Gata-Nijar, 04118 San José",
       video: "video3.mp4",
       images: ["images/img16.jpg", "images/img17.jpg", "images/img18.jpg"],
       audio: "monsul.mp3",
       location:
           "https://www.google.com/maps/place/Playa+de+M%C3%B3nsul/@36.7307634,-2.1630215,14z/data=!3m1!4b1!4m5!3m4!1s0xd7a8d32af24788b:0xb309552702df2976!8m2!3d36.7307652!4d-2.1455119"),
   Place(
-    name: "The dessert",
-    description: "Dummy Data Description",
-    address: "Kraciasta 1",
+    name: "Tabernas dessert",
+    description:
+        "The Tabernas Desert (Spanish: Desierto de Tabernas) is one of Spain's semi-arid deserts, located within Spain's south-eastern province of Almería. It is in the interior, about 30 kilometers (19 mi) north of the provincial capital Almería, in the Tabernas municipality in Andalusia.",
+    address: "04260, Almería, Spain",
     video: "video3.mp4",
-    audio: "monsul.mp3",
+    location:
+        "https://www.google.com/maps/place/Tabernas/@37.0012035,-2.4679077,14z/data=!3m1!4b1!4m5!3m4!1s0xd7aa0bb2b0f7187:0xcc8e564e55726f59!8m2!3d37.0012053!4d-2.4503981",
+    audio: "tabernas.mp3",
   ),
 ];
 
@@ -111,16 +121,26 @@ List<Tour> tours = [
       name: "Beach Tour",
       description:
           "Exciting beach tour around some of the most beautiful beaches in Almeria.",
-      places: ["Playa de Monsul", "Playa de Genoveses", "Cala del plomo"],
+      places: [
+        "Playa de Monsul",
+        "Playa de Genoveses",
+        "Playa Cala de Enmedio"
+      ],
       map: "images/map1.png"),
   Tour(
-    name: "Tour 2",
-    description: "Dummy Data Description",
-    places: ["Place 1", "Place 2"],
+    name: "Almeria Tour",
+    description: "Tour of the main places of Almeria.",
+    places: ["Cathedral of Almeria", "Alcazaba", "University"],
+    map: "images/map2.png",
   ),
   Tour(
-    name: "Tour 3",
-    description: "Dummy Data Description",
-    places: ["Place 1", "Place 2"],
+    name: "Beach Tour 2",
+    description: "Discover even more beacher around Almeria!",
+    places: [
+      "Parque Natural Cabo de Gata",
+      "Playa de los Muertos",
+      "Playa Cala de Enmedio"
+    ],
+    map: "images/map3.png",
   ),
 ];

@@ -7,3 +7,5 @@ const kBcgColor = Color.fromARGB(255, 252, 252, 252);
 const kTileColor = Color.fromARGB(255, 255, 255, 255);
 const kGreenColor = Color(0xFF73937E);
 const kAccentColor = Color(0xFF585563);
+const kPinkColor = Color(0xFFED92A2);
+const kAddressColor = Color(0xFFA294C2);

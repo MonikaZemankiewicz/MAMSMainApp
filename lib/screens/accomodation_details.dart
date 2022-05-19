@@ -9,6 +9,7 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:secondlab/screens/add_review.dart';
 import 'package:secondlab/models/review.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:secondlab/widgets/basic_details_panel.dart';
 
 class AccomodationDetails extends StatefulWidget {
   final Accomodation accomodation;
@@ -91,64 +92,12 @@ class _AccomodationDetailsState extends State<AccomodationDetails> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: Text(widget.accomodation.name,
-                          style: const TextStyle(
-                            color: kAccentColor,
-                            fontSize: 30.0,
-                          )),
-                    ),
-                    Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        const Icon(Icons.location_pin,
-                            color: Color(0xFFED92A2)),
-                        const SizedBox(width: 10.0),
-                        Text(widget.accomodation.address,
-                            style: const TextStyle(
-                                color: Color(0xFFA294C2),
-                                fontSize: 16.0,
-                                fontWeight: FontWeight.w500)),
-                      ],
-                    ),
-                    TextButton(
-                      onPressed: () async {
-                        if (await canLaunch(widget.accomodation.location)) {
-                          await launch(widget.accomodation.location);
-                        } else {
-                          throw "Couldn't launch Map";
-                        }
-                      },
-                      child: Icon(Icons.near_me),
-                    ),
-                  ],
-                ),
-                widget.accomodation.images.isNotEmpty
-                    ? CarouselSlider(
-                        options: CarouselOptions(),
-                        items: widget.accomodation.images
-                            .map((item) => Container(
-                                  child: Center(
-                                      child: Image.asset(item,
-                                          fit: BoxFit.cover, width: 1000)),
-                                ))
-                            .toList(),
-                      )
-                    : Text('No images to display'),
-                Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Text(widget.accomodation.description,
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(
-                        color: Colors.black,
-                        fontSize: 15.0,
-                      )),
-                ),
+                BasicDetailsPanel(
+                    name: widget.accomodation.name,
+                    address: widget.accomodation.address,
+                    location: widget.accomodation.location,
+                    images: widget.accomodation.images,
+                    description: widget.accomodation.description),
                 widget.accomodation.rated
                     ? Column(
                         children: [
